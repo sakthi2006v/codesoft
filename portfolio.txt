@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+   <style> 
+    body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #0aaae9;
+    color: #e3ff0e;
+    padding: 1em 0;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+}
+section {
+    padding: 2em;
+    margin: 1em 0;
+}
+#about img, #projects img {
+    max-width: 100%;
+    height: auto;
+}
+footer {
+    background: #0ad860;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+   </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Your Name</h1>
+        <p>Your Tagline or Introduction</p>
+    </header>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="your-image.jpg" alt="Your Name">
+        <p>Write a short bio highlighting your skills and experience.</p>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Skill 1</li>
+            <li>Skill 2</li>
+            <li>Skill 3</li>
+            <!-- Add more skills as needed -->
+        </ul>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project Title</h3>
+            <img src="project-image.jpg" alt="Project Image">
+            <p>Project description.</p>
+        </div>
+        <!-- Repeat project block for more projects -->
+    </section>
+    <!-- Resume Section -->
+    <section id="resume">
+        <h2>Resume</h2>
+        <a href="your-resume.pdf" download>Download My Resume</a>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: your-email@example.com</p>
+        <p>Phone: (123) 456-7890</p>
+    </section>
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+‎QUIZ maker platform.html
++40
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>QUIZ maker platform
+    <script>
+        const express = require('express');
+const router = express.Router();
+const Quiz = require('../models/Quiz'); // Assuming a Quiz model is defined
+router.post('/create-quiz', async (req, res) => {
+    const { title, questions } = req.body;
+    const newQuiz = new Quiz({ title, questions });
+    try {
+        await newQuiz.save();
+        res.status(201).send({ message: 'Quiz created successfully!' });
+    } catch (error) {
+        res.status(500).send({ message: 'Error creating quiz.' });
+    }
+});
+    </script>
+</head>
+<body>
+<form id="quizForm">
+    <h2>Create a Quiz</h2>
+    <input type="text" placeholder="Quiz Title" required>
+    <div id="questionsContainer">
+        <div class="question">
+            <input type="text" placeholder="Question" required>
+            <input type="text" placeholder="Option 1" required>
+            <input type="text" placeholder="Option 2" required>
+            <input type="text" placeholder="Option 3" required>
+            <input type="text" placeholder="Option 4" required>
+            <input type="text" placeholder="Correct Answer" required>
+        </div>
+    </div>
+    <button type="button" onclick="addQuestion()">Add Another Question</button>
+    <button type="submit">Save Quiz</button>
+</form>
+</body>
+</html>
